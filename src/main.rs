@@ -25,47 +25,57 @@ fn main() {
     let s1 = "init some thing".to_string();
     println!("{}", s1);
 
-
     let mut s2 = String::from("hello");
     s2.push_str(", world");
     let ss = "  ！".to_string();
     s2.push_str(&ss); //引用方法
-    println!("{}",s2);
-    println!("ss = {}",ss);
+    println!("{}", s2);
+    println!("ss = {}", ss);
 
     let mut s2 = String::from("tes");
     s2.push('m'); // 只能添加一个字符 需要使用单引号
-    // s2.push('mx'); // error
-    // s2.push("m");   // error
-    println!("{}",s2);
-
+                  // s2.push('mx'); // error
+                  // s2.push("m");   // error
+    println!("{}", s2);
 
     let s1 = "hello".to_string();
-    let s2 =String::from(", world");
+    let s2 = String::from(", world");
     let s3 = s1 + &s2;
-    println!("s3 = {}",s3);
+    println!("s3 = {}", s3);
     // println!("s1 = {}",s1);  // error s1的所有权 全部赋值给了s3
-    println!("s2 = {}",s2);
+    println!("s2 = {}", s2);
 
     let s341 = String::from("tic");
     let s342 = String::from("tac");
     let s343 = String::from("toe");
-    let s344 = format!("{}-{}-{}",s341,s342,s343); //format！ 和 println! 类似 一样的
-    println!("s344 = {}",s344);
-    println!("s341 = {}",s341);
-    println!("s342 = {}",s342);
-    println!("s343 = {}",s343);
+    let s344 = format!("{}-{}-{}", s341, s342, s343); //format！ 和 println! 类似 一样的
+    println!("s344 = {}", s344);
+    println!("s341 = {}", s341);
+    println!("s342 = {}", s342);
+    println!("s343 = {}", s343);
 
     let s4 = String::from("hello");
     // let s41 = s4[2]; // 不能被索引
-    println!("s4 = {}",s4.len());
+    println!("s4 = {}", s4.len());
 
     let s4 = String::from("你好");
-    println!("s4 = {}",s4.len());
+    println!("s4 = {}", s4.len());
 
     let hello = "你好";
     let h5 = &hello[0..3];
-    println!("h5 = {}",h5);
+    println!("h5 = {}", h5);
+
+    // chars 遍历
+    for c in s4.chars() {
+        println!("c = {}", &c);
+    }
+
+    // bytes 遍历
+    println!("=======================");
+    for b in s4.bytes() {
+        println!("b = {}", &b);
+    }
+    println!("=======================");
 
     println!("hello world！");
 }
