@@ -1,22 +1,15 @@
-mod factory {
-    pub mod produce_refrigerator {
-        pub fn produce_re() {
-            println!("produce refrigerator!");
-        }
-    }
-    pub mod produce_washing_machine {
-        // 洗衣机
-        pub fn produce_washing_maching() {
-            println!("produce washing machine !");
-        }
-    }
-}
-
+// use::mylib::factory;
+// use::mylib::factory::produce_refrigerator;
+// use::mylib::factory::produce_refrigerator::produce_re;
+// use mylib::factory::produce_washing_machine as A; // 重命名 简写
+use mylib::factory::*;
 
 fn main() {
-    // 调用模块使用
-    factory::produce_refrigerator::produce_re();
-    factory::produce_washing_machine::produce_washing_maching();
+    mylib::factory::produce_refrigerator::produce_re(); //绝对路径
+    // factory::produce_washing_machine::produce_washing_maching();
+    produce_washing_machine::produce_washing_maching();
+    // A::produce_washing_maching();
+
     println!("hello world !")
 }
 

@@ -5,10 +5,3 @@ version = 3
 [[package]]
 name = "mylib"
 version = "0.1.0"
-
-[[package]]
-name = "tobs"
-version = "0.1.0"
-dependencies = [
- "mylib",
-]
