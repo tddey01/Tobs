@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 mylib = {path = "./mylib" }
 rust-crypto = "0.2"
+sha2 = "0.9.3"
