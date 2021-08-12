@@ -6,8 +6,6 @@
 //(2)实际项目中应该用Result
 //5、Option和Result
 
-
-
 use std::fs::File;
 use std::io;
 use std::io::Read;
@@ -35,10 +33,16 @@ fn main() {
 //     }
 // }
 
-fn read_username_from_file() -> Result<String, io::Error> {
-    let mut f = File::open("hello.txt")?;
+// fn read_username_from_file() -> Result<String, io::Error> {
+//     let mut f = File::open("hello.txt")?;
 
+//     let mut s = String::new();
+//     f.read_to_string(&mut s)?;
+//     Ok(s)
+// }
+
+fn read_username_from_file() -> Result<String, io::Error> {
     let mut s = String::new();
-    f.read_to_string(&mut s)?;
+    File::open("hello.txt")?.read_to_string(&mut s)?;
     Ok(s)
 }
