@@ -13,7 +13,7 @@ mod tests {
 
     #[test]
     fn use_cat() {
-        // cat::hello()
+       cat::hello();
         assert_eq!(true,  cat::is_cat());
     }
 
