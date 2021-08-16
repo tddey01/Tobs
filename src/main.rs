@@ -26,29 +26,46 @@
 //     laragest
 // }
 
-fn main() {
-    // let number_list = vec![1,2,23,34,8,100];
-    // let max_number = laragest_i32(&number_list);
-    // println!("max_number = {}",max_number);
+// fn main() {
+//     // let number_list = vec![1,2,23,34,8,100];
+//     // let max_number = laragest_i32(&number_list);
+//     // println!("max_number = {}",max_number);
 
-    // let char_list = vec!['a','y','b'];
-    // let max_char =  laragest_char(&char_list);
-    // println!("max_chat = {}",&max_char);
+//     // let char_list = vec!['a','y','b'];
+//     // let max_char =  laragest_char(&char_list);
+//     // println!("max_chat = {}",&max_char);
 
-    let number_list = vec![1,2,3,5,7,88,92];
-    let max_number =  laragest(&number_list);
-    println!("max_number = {}",max_number);
-    println!("hello world!")
+//     let number_list = vec![1, 2, 3, 5, 7, 88, 92];
+//     let max_number = laragest(&number_list);
+//     println!("max_number = {}", max_number);
+//     println!("hello world!");
+//     let char_list = vec!['a', 'y', 'b'];
+//     let max_char = laragest(&char_list);
+//     println!("max_chat = {}", &max_char);
+// }
+
+// ////--------泛型-----------
+// fn laragest<T: PartialOrd + Copy>(list: &[T]) -> T {
+//     let mut larger = list[0];
+//     for &itme in list.iter() {
+//         if itme > larger {
+//             larger = itme
+//         }
+//     }
+//     larger
+// }
+
+// 定义结构体中使用泛型
+#[derive(Debug)]
+struct Point<T> {
+    x: T,
+    y: T,
 }
+fn main(){
+    let integer = Point{x:1,y:2};
+    println!("integr = {:#?}",integer); // 换行打印
 
+    let float = Point{x:1.1, y:2.2};
+    println!("float = {:?}",float); // 不换行打印
 
-////--------泛型-----------
-fn laragest<T: PartialOrd +  Copy> (list:&[T]) -> T {
-    let mut larger =  list[0];
-    for &itme in list.iter(){
-        if itme > larger{
-            larger =  itme
-        }
-    }
-    larger
-} 
+}
