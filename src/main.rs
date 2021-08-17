@@ -55,17 +55,80 @@
 //     larger
 // }
 
-// 定义结构体中使用泛型
-#[derive(Debug)]
+// // 定义结构体中使用泛型
+// #[derive(Debug)]
+// struct Point<T> {
+//     x: T,
+//     y: T,
+// }
+// #[derive(Debug)]
+// struct Point2<T, U> {
+//     x: T,
+//     y: U,
+// }
+
+// fn main() {
+//     let integer = Point { x: 1, y: 2 };
+//     println!("integr = {:#?}", integer); // 换行打印
+
+//     let float = Point { x: 1.1, y: 2.2 };
+//     println!("float = {:?}", float); // 不换行打印
+
+//     let a = Point2{x:1.1,y:'a'};
+//     println!("{:?}",&a)
+// }
+
+// // --------枚举中使用泛型-----------
+// enum Option<T>{
+//     Some(T),
+//     None,
+// }
+// enum Result<T,E>{
+//     Ok(T),
+//     Err(E),
+// }
+
+//--------在方法里面使用泛型-----------
+
 struct Point<T> {
     x: T,
     y: T,
 }
-fn main(){
-    let integer = Point{x:1,y:2};
-    println!("integr = {:#?}",integer); // 换行打印
 
-    let float = Point{x:1.1, y:2.2};
-    println!("float = {:?}",float); // 不换行打印
+struct Point2<T, U> {
+    x: T,
+    y: U,
+}
 
+impl<T> Point<T> {
+    // ipml 是方法
+    fn get_x(&self) -> &T {
+        &self.x
+    }
+    fn get_y(&self) -> &T {
+        &self.y
+    }
+}
+impl<T, U> Point2<T, U> {
+    fn creat_point<V, W>(self, other: Point2<V, W>) -> Point2<T, W> {
+        Point2 {
+            x: self.x,
+            y: other.y,
+        }
+    }
+}
+
+fn main() {
+    let p = Point { x: 1, y: 2 };
+    println!("x = {}", p.get_x());
+    println!("y = {}", p.get_y());
+    println!("hello world!");
+    let p = Point { x: 1.1, y: 2.2 };
+    println!("x = {}", p.get_x());
+    println!("y = {}", p.get_y());
+
+    let p1 = Point2 { x: 5, y: 2.2 };
+    let p2 = Point2{x:"hello",y:'c'};
+    let p3 = p1.creat_point(p2);
+    println!("x = {}  y = {}", p3.x ,p3.y);
 }
