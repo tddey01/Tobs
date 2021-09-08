@@ -7,15 +7,23 @@ pub trait GeInformation {
     fn get_age(&self) -> u32;
 }
 /**/
+trait SchoolName {
+    fn get_school_name(&self) -> String {
+        String::from("HongxingSchool")
+    }
+}
+
 // 3 实现trait
 pub struct Student {
     pub name: String,
     pub age: u32,
 }
 
+impl SchoolName for Student {}
+
 impl GeInformation for Student {
     fn get_name(&self) -> &String {
-      &self.name
+        &self.name
     }
     fn get_age(&self) -> u32 {
         self.age
@@ -26,6 +34,12 @@ pub struct Teacher {
     pub name: String,
     pub age: u32,
     pub subject: String,
+}
+
+impl SchoolName for Teacher {
+    fn get_school_name(&self) -> String {
+        String::from("GuangmingSchool")
+    }
 }
 
 impl GeInformation for Teacher {
@@ -39,16 +53,21 @@ impl GeInformation for Teacher {
 
 //4 默认实现：可以在定义trait的时候提供默认的行为， trait的类型可以使用默认的行为
 // 5 trait作为参数
-fn print_information(item: impl GeInformation){
-    println!("name = {}",item.get_name());
+fn print_information(item: impl GeInformation) {
+    println!("name = {}", item.get_name());
     println!("age = {}", item.get_age());
 }
 
 fn main() {
-    let s = Student{ name:"xiaohong".to_string(), age: 10};
-    let t = Teacher{ name: "xiaohuo".to_string(), age: 10 ,subject:String::from("hello")};
+    let s = Student { name: "xiaohong".to_string(), age: 10 };
+    let t = Teacher { name: "xiaohuo".to_string(), age: 10, subject: String::from("hello") };
     // println!("student ,nam= {}, age={}",s.get_name(),s.get_age());
     // println!("Teacher ,nam= {}, age={},subject={}",t.get_name(),t.get_age(),t.subject);
+    let s_school_name = s.get_school_name();
+    println!("student school name = {}", s_school_name);
+    let t_school_name = t.get_school_name();
+    println!("teacher school name  = {}", t_school_name);
+
     print_information(s);
     print_information(t);
     println!("hello world!")
